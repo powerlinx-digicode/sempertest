@@ -4,11 +4,12 @@ import HeaderBar from '../../components/Header/HeaderBar';
 import styles from './styles';
 import ScannerBottomBar from '../../components/ScannerBottomBar/ScannerBottomBar';
 import News from '../../components/NewsComponent/NewsComponent';
+import i18n from 'i18next';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, }) => {
   return (
     <>
-      <HeaderBar screenName={'News'} showMenu={true} onClickBurger={() => navigation.navigate('MenuScreen')} />
+      <HeaderBar screenName={i18n.t('Home:NewsScreenTitle')} showMenu={true} onClickBurger={() => navigation.navigate('MenuScreen')} />
       <View style={styles.container}>
         <View style={styles.newsList}>
           <News />

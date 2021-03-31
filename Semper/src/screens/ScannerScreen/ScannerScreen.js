@@ -8,6 +8,7 @@ import { RNCamera } from 'react-native-camera';
 import HeaderBar from '../../components/Header/HeaderBar';
 import { COLORS } from '../../constants/colors';
 import Api from '../../services/Api/Api';
+import i18n from 'i18next';
 
 const API = new Api();
 
@@ -19,7 +20,7 @@ const ScannerScreen = ({ navigation }) => {
 
   return (
     <>
-      <HeaderBar screenName={'Barcode Scanner'} canGoBack={true} goBack={() => navigation.goBack()} />
+      <HeaderBar screenName={i18n.t('Home:ScannerTitle')} canGoBack={true} goBack={() => navigation.goBack()} />
       <View style={styles.container}>
 
         <RNCamera

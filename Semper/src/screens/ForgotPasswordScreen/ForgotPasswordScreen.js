@@ -6,21 +6,20 @@ import MainLogo from '../../uikit/MainLogo/MainLogo';
 import Button from '../../uikit/Button/Button';
 import Input from '../../components/Input/Input';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import i18n from 'i18next';
 
 const ForgotPassword = ({ navigation }) => {
 
-
   return (
     <>
-      <HeaderBar screenName={'Password reminder'} />
+      <HeaderBar screenName={i18n.t('Auth:PasswordScreenTitle')} />
       <View style={styles.container}>
         <View style={styles.logoWrapper}>
           <MainLogo width={209} height={92} />
         </View>
         <View style={styles.inputArea}>
           <View style={styles.inputWrapper}>
-            <Input label={'Email address'} placeholder={'Your email'} canReset={true} />
+            <Input label={i18n.t('Auth:InputEmail')} placeholder={i18n.t('Auth:InputEmailPlaceholder')} canReset={true} />
           </View>
         </View>
 
@@ -28,10 +27,10 @@ const ForgotPassword = ({ navigation }) => {
 
         <View style={styles.navigationButtonContainer}>
           <TouchableOpacity style={styles.navigationButton} onPress={() => navigation.navigate("LogIn")} activeOpacity={0.8}>
-            <Text style={styles.navigationButtonText}>Log in</Text>
+            <Text style={styles.navigationButtonText}>{i18n.t('Auth:Login')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navigationButton} onPress={() => navigation.navigate("SignUp")} activeOpacity={0.8}>
-            <Text style={styles.navigationButtonText}>Sign Up</Text>
+            <Text style={styles.navigationButtonText}>{i18n.t('Auth:SignupBtn')}</Text>
           </TouchableOpacity>
         </View>
 

@@ -8,9 +8,10 @@ import Input from '../../components/Input/Input';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { LogIn } from '../../store/customer/actions';
 import { connect } from 'react-redux';
+import i18n from 'i18next';
 
 
-const LoginScreen = ({ navigation, isLoading, login }) => {
+const LoginScreen = ({ navigation, isLoading, login, }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +20,7 @@ const LoginScreen = ({ navigation, isLoading, login }) => {
 
   return (
     <>
-      <HeaderBar screenName={'Log in'} />
+      <HeaderBar screenName={i18n.t('Auth:Login')} />
       <View style={styles.container}>
         <View style={styles.logoWrapper}>
           <MainLogo width={209} height={92} />
@@ -27,8 +28,8 @@ const LoginScreen = ({ navigation, isLoading, login }) => {
         <View style={styles.inputArea}>
           <View style={styles.inputWrapper}>
             <Input
-              label={'Email address'}
-              placeholder={'Your email'}
+              label={i18n.t('Auth:InputEmail')}
+              placeholder={i18n.t('Auth:InputEmailPlaceholder')}
               canReset={true}
               value={email}
               onReset={() => setEmail('')}
@@ -36,8 +37,8 @@ const LoginScreen = ({ navigation, isLoading, login }) => {
               keyboardType='email-address' />
           </View>
           <Input
-            label={'Password'}
-            placeholder={'Your passoword'}
+            label={i18n.t('Auth:InputPassword')}
+            placeholder={i18n.t('Auth:InputPasswordPlaceholder')}
             type={'password'}
             value={password}
             onReset={() => setSecurePassword(!securePassword)}
@@ -46,14 +47,14 @@ const LoginScreen = ({ navigation, isLoading, login }) => {
           />
         </View>
 
-        <Button text={'Log in'} onPress={() => login({ email, password })} isLoading={isLoading} />
+        <Button text={i18n.t('Auth:Login')} onPress={() => login({ email, password })} isLoading={isLoading} />
 
         <View style={styles.navigationButtonContainer}>
           <TouchableOpacity style={styles.navigationButton} onPress={() => navigation.navigate("ForgotPassword")} activeOpacity={0.8}>
-            <Text style={styles.navigationButtonText}>Forgot your password?</Text>
+            <Text style={styles.navigationButtonText}>{i18n.t('Auth:ForgotPassword')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navigationButton} onPress={() => navigation.navigate("SignUp")} activeOpacity={0.8}>
-            <Text style={styles.navigationButtonText}>Sign Up</Text>
+            <Text style={styles.navigationButtonText}>{i18n.t('Auth:SignupBtn')}</Text>
           </TouchableOpacity>
         </View>
 

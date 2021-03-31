@@ -11,26 +11,26 @@ const API = new Api;
 
 export const LogIn = ({ email, password }) => async dispatch => {
 
-  const result = await API.logIn({ email, password });
-  console.log("RESULT", result)
-
   await dispatch({
     type: HANDLE_PROGRESS,
     payload: true
   })
 
+  const result = await API.logIn({ email, password });
+
   if (result.statusCode === 200) {
     AsyncStorage.setItem('userToken', result.customer.token)
 
-    await dispatch({
+    dispatch({
       type: HANDLE_LOGIN,
       payload: result.customer
     })
   } else {
-    await dispatch({
+    dispatch({
       type: HANDLE_PROGRESS,
       payload: false
     })
+
     Alert.alert('', result.data.error)
   }
 

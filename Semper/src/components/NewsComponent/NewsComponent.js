@@ -7,7 +7,7 @@ const News = ({ news }) => {
   const [isOpened, setOpen] = useState(false)
 
   return (
-    <TouchableOpacity style={[styles.container, isOpened ? { minHeight: '80%' } : {}]} activeOpacity={1} onPress={() => setOpen(!isOpened)}>
+    <TouchableOpacity style={[styles.container, isOpened ? { minHeight: '80%' } : {}]} activeOpacity={1} onPress={() => setOpen(!isOpened)} activeOpacity={1}>
       <View style={styles.topInfo}>
         <Text style={styles.topTitle}>Main title for news</Text>
         <Text style={styles.topDate}>12.03.2021</Text>

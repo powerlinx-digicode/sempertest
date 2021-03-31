@@ -6,13 +6,14 @@ import MainLogo from '../../uikit/MainLogo/MainLogo';
 import Button from '../../uikit/Button/Button';
 import Input from '../../components/Input/Input';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import i18n from 'i18next';
 
 
 const SignUpScreen = ({ navigation }) => {
 
   return (
     <>
-      <HeaderBar screenName={'Sign Up'} />
+      <HeaderBar screenName={i18n.t('Auth:Signup')} />
       <View style={styles.container}>
         <View style={styles.logoWrapper}>
           <MainLogo width={209} height={92} />
@@ -22,19 +23,19 @@ const SignUpScreen = ({ navigation }) => {
             <Input label={'Username'} placeholder={'Enter your name or Surname'} canReset={true} />
           </View>
           <View style={styles.inputWrapper}>
-            <Input label={'Email address'} placeholder={'Your email'} canReset={true} />
+            <Input label={i18n.t('Auth:InputEmail')} placeholder={i18n.t('Auth:InputEmailPlaceholder')} canReset={true} />
           </View>
           <View style={styles.inputWrapper}>
-            <Input label={'Password'} placeholder={'Your password'} type={'password'} />
+            <Input label={i18n.t('Auth:InputPassword')} placeholder={i18n.t('Auth:InputPasswordPlaceholder')} type={'password'} />
           </View>
-          <Input label={'Confirm Password'} placeholder={'Your password again'} type={'password'} />
+          <Input label={i18n.t('Auth:InputConfirmPassword')} placeholder={i18n.t('Auth:InputConfirmPasswordPlaceholder')} type={'password'} />
         </View>
 
-        <Button text={'Sign Up'} />
+        <Button text={i18n.t('Auth:Signup')} />
 
         <View style={styles.navigationButtonContainer}>
           <TouchableOpacity style={styles.navigationButton} onPress={() => navigation.navigate("LogIn")} activeOpacity={0.8}>
-            <Text style={styles.navigationButtonText}>Log in</Text>
+            <Text style={styles.navigationButtonText}>{i18n.t('Auth:Login')}</Text>
           </TouchableOpacity>
         </View>
 
