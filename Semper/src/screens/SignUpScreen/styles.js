@@ -23,13 +23,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   navigationButton: {
-    marginBottom: 17,
-    borderBottomColor: COLORS.GREY,
-    paddingBottom: 1,
-    borderBottomWidth: 1,
+    marginBottom: 17
   },
   navigationButtonText: {
     color: COLORS.GREY,
+    textDecorationLine: 'underline',
     fontSize: 12,
     lineHeight: 14
   }

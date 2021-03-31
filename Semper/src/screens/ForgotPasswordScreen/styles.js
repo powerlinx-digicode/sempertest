@@ -12,24 +12,19 @@ const styles = StyleSheet.create({
     marginVertical: 29
   },
   inputArea: {
-    marginBottom: 17,
+    marginBottom: 61,
     width: "100%"
-  },
-  inputWrapper: {
-    marginBottom: 19
   },
   navigationButtonContainer: {
     marginTop: 22,
     alignItems: 'center'
   },
   navigationButton: {
-    marginBottom: 17,
-    borderBottomColor: COLORS.GREY,
-    paddingBottom: 1,
-    borderBottomWidth: 1,
+    marginBottom: 17
   },
   navigationButtonText: {
     color: COLORS.GREY,
+    textDecorationLine: 'underline',
     fontSize: 12,
     lineHeight: 14
   }

@@ -3,15 +3,10 @@ import { COLORS } from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    backgroundColor: COLORS.WHITE
+    flex: 1,
+    backgroundColor: COLORS.WHITE,
+    justifyContent: "space-between"
   },
-  title: {
-    fontSize: 18,
-    lineHeight: 21,
-    color: COLORS.BLACK,
-    marginTop: 18
-  }
 })
 
 export default styles;
