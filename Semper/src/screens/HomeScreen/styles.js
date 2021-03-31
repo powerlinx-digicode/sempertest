@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
     justifyContent: "space-between"
   },
+  newsList: {
+    marginTop: 23,
+    paddingHorizontal: 10
+  }
 })
 
 export default styles;

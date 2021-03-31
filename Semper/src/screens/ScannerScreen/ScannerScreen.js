@@ -1,36 +1,46 @@
 import React from 'react';
 import {
-  Text,
   View,
   StyleSheet,
   Alert,
-  TouchableOpacity,
-  Image,
 } from 'react-native';
-import Camera from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
+import HeaderBar from '../../components/Header/HeaderBar';
+import { COLORS } from '../../constants/colors';
+import Api from '../../services/Api/Api';
 
-const ScannerScreen = () => {
+const API = new Api();
+
+const ScannerScreen = ({ navigation }) => {
 
   const onBarCodeRead = (e) => {
     Alert.alert("Barcode value is" + e.data, "Barcode type is" + e.type);
   }
 
   return (
-    <View style={styles.container}>
-      <Camera
-        style={styles.preview}
-        onBarCodeRead={onBarCodeRead}
-      >
-        <Text style={{
-          backgroundColor: 'white'
-        }}>BARCODE SCANNER</Text>
-      </Camera>
-      <View style={styles.bottomOverlay}>
-        <TouchableOpacity >
-          <Text>Torch</Text>
-        </TouchableOpacity>
+    <>
+      <HeaderBar screenName={'Barcode Scanner'} canGoBack={true} goBack={() => navigation.goBack()} />
+      <View style={styles.container}>
+
+        <RNCamera
+          style={styles.preview}
+          onBarCodeRead={onBarCodeRead}
+          androidCameraPermissionOptions={{
+            title: 'Permission to use camera',
+            message: 'We need your permission to use your camera',
+            buttonPositive: 'Ok',
+            buttonNegative: 'Cancel',
+          }}
+          androidRecordAudioPermissionOptions={{
+            title: 'Permission to use audio recording',
+            message: 'We need your permission to use your audio',
+            buttonPositive: 'Ok',
+            buttonNegative: 'Cancel',
+          }}
+        >
+        </RNCamera>
       </View>
-    </View>
+    </>
   )
 }
 
@@ -39,6 +49,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    paddingTop: 20,
+    backgroundColor: COLORS.WHITE
   },
   preview: {
     flex: 1,

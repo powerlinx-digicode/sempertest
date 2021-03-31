@@ -10,6 +10,9 @@ class Api {
     this.path = {
       auth: {
         login: '/api/employee/login'
+      },
+      scanner: {
+        init: '/api/employee/assign_order'
       }
 
     }
@@ -65,6 +68,8 @@ class Api {
     return json;
   }
 
+  // AUTH METHODS
+
   async logIn({ method = 'POST', email = '', password = '', } = {}) {
     return this.requestPOST({
       path: this.path.auth.login,
@@ -75,6 +80,22 @@ class Api {
       }
     });
   }
+
+  // END AUTH METHODS
+
+  // SCANNER METHODS
+
+  async scanCode({ method = 'POST', code = '' } = {}) {
+    return this.requestPOST({
+      path: this.path.scanner.init,
+      method,
+      body: {
+        "barcode": code
+      }
+    });
+  }
+
+  // END SCANNER METHODS
 
 
 }

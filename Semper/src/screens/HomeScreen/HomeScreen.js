@@ -3,14 +3,15 @@ import { View, Text } from 'react-native';
 import HeaderBar from '../../components/Header/HeaderBar';
 import styles from './styles';
 import ScannerBottomBar from '../../components/ScannerBottomBar/ScannerBottomBar';
+import News from '../../components/NewsComponent/NewsComponent';
 
 const HomeScreen = ({ navigation }) => {
   return (
     <>
-      <HeaderBar screenName={'News'} showMenu={true} />
+      <HeaderBar screenName={'News'} showMenu={true} onClickBurger={() => navigation.navigate('MenuScreen')} />
       <View style={styles.container}>
-        <View>
-
+        <View style={styles.newsList}>
+          <News />
         </View>
         <ScannerBottomBar openScanner={() => navigation.navigate('ScannerScreen')} />
       </View>
