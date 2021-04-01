@@ -32,6 +32,7 @@ const LoginScreen = ({ navigation, isLoading, login, }) => {
               placeholder={i18n.t('Auth:InputEmailPlaceholder')}
               canReset={true}
               value={email}
+              autoCapitalize={'none'}
               onReset={() => setEmail('')}
               onChangeText={(value) => setEmail(value)}
               keyboardType='email-address' />

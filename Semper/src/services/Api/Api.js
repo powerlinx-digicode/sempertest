@@ -20,6 +20,8 @@ class Api {
 
   async requestPOST({ path = '', method = '', body = {}, token = '' } = {}) {
 
+    console.log("POST " + path + ', body: ' + body)
+
     const response = await fetch(`${this.host}${path}`, {
       method,
       headers: {
@@ -45,6 +47,9 @@ class Api {
   }
 
   async requestGET({ path = '', method = '', token = '' } = {}) {
+
+    console.log("GET " + path + ', body: ' + body)
+
 
     const response = await fetch(`${this.host}${path}`, {
       method,
@@ -86,11 +91,16 @@ class Api {
   // SCANNER METHODS
 
   async scanCode({ method = 'POST', code = '' } = {}) {
+
+    const token = await AsyncStorage.getItem('userToken');
+    console.log("TOKEN", token)
+
     return this.requestPOST({
       path: this.path.scanner.init,
+      token,
       method,
       body: {
-        "barcode": code
+        "barcode": code,
       }
     });
   }

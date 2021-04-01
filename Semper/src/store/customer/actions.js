@@ -21,12 +21,12 @@ export const LogIn = ({ email, password }) => async dispatch => {
   if (result.statusCode === 200) {
     AsyncStorage.setItem('userToken', result.customer.token)
 
-    dispatch({
+    await dispatch({
       type: HANDLE_LOGIN,
       payload: result.customer
     })
   } else {
-    dispatch({
+    await dispatch({
       type: HANDLE_PROGRESS,
       payload: false
     })

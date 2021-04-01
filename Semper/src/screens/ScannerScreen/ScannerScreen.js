@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -14,8 +14,16 @@ const API = new Api();
 
 const ScannerScreen = ({ navigation }) => {
 
+  useEffect(() => {
+    API.scanCode({ code: '4820215621311', }).then(res => {
+      // console.log("RES", res)
+    })
+
+  }, [])
+
   const onBarCodeRead = (e) => {
     Alert.alert("Barcode value is" + e.data, "Barcode type is" + e.type);
+    // API.scanCode({ code: '4820215621311' })
   }
 
   return (

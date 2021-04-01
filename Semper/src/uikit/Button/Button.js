@@ -7,7 +7,7 @@ const Button = ({ onPress, text, isLoading = false }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container} activeOpacity={0.8}>
       {isLoading ?
-        <ActivityIndicator color={COLORS.WHITE} size="large" />
+        <ActivityIndicator color={COLORS.WHITE} size="small" />
         :
         <Text style={styles.title}>{text}</Text>
       }
