@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
   },
   inputArea: {
     marginBottom: 17,
-    width: "100%"
+    width: "100%",
+    flex: 1
   },
   inputWrapper: {
     marginBottom: 19

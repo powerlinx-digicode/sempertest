@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity, Platform, KeyboardAvoidingView } from 'react-native';
 import HeaderBar from '../../components/Header/HeaderBar';
 import styles from './styles';
 import MainLogo from '../../uikit/MainLogo/MainLogo';
 import Button from '../../uikit/Button/Button';
 import Input from '../../components/Input/Input';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { LogIn } from '../../store/customer/actions';
 import { connect } from 'react-redux';
 import i18n from '../../locales/i18n';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { COLORS } from '../../constants/colors';
 
 
 const LoginScreen = ({ navigation, isLoading, login, }) => {
@@ -19,13 +20,16 @@ const LoginScreen = ({ navigation, isLoading, login, }) => {
 
 
   return (
-    <>
+    <KeyboardAwareScrollView
+      bounces={false}
+      style={{ backgroundColor: COLORS.WHITE }}
+    >
       <HeaderBar screenName={i18n.t('Auth:Login')} />
-      <View style={styles.container}>
+      <View style={styles.container}  >
         <View style={styles.logoWrapper}>
           <MainLogo width={209} height={92} />
         </View>
-        <View style={styles.inputArea}>
+        <View style={styles.inputArea} >
           <View style={styles.inputWrapper}>
             <Input
               label={i18n.t('Auth:InputEmail')}
@@ -60,7 +64,7 @@ const LoginScreen = ({ navigation, isLoading, login, }) => {
         </View>
 
       </View>
-    </>
+    </KeyboardAwareScrollView>
   )
 }
 
