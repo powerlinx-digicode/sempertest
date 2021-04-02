@@ -22,5 +22,11 @@ export const en = {
   Menu: {
     MenuScreenTitle: 'Menu',
     LogoutButton: 'Log out'
+  },
+  Scanner: {
+    SuccessOrder: "The order has been successfully linked to you.",
+    NotFoundOrder: 'Order not found. Contact the manager.',
+    UnavailableService: 'Service is unavailable. Please try again later.',
+    SomethingWrong: 'Please try a different code and contact the manager.'
   }
 }

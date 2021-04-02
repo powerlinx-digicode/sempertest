@@ -8,27 +8,27 @@ import { RNCamera, } from 'react-native-camera';
 import HeaderBar from '../../components/Header/HeaderBar';
 import { COLORS } from '../../constants/colors';
 import Api from '../../services/Api/Api';
+import { sendMessage } from '../../services/Notifications/notificationService';
 import i18n from '../../locales/i18n';
-import { createLocalNotification, sendMessage } from '../../services/Notifications/notificationService';
 
 const API = new Api();
 
 const handleScannedCode = (statusCode) => {
   switch (statusCode) {
     case 200: {
-      sendMessage({ text: "The order has been successfully linked to you" });
+      sendMessage({ text: i18n.t('Scanner:SuccessOrder') });
       break;
     }
     case 404: {
-      Alert.alert('', 'Order not found. Contact the manager')
+      Alert.alert('', i18n.t('Scanner:NotFoundOrder'))
       break;
     }
     case 500: {
-      Alert.alert('', 'Service is unavailable. Please try again later')
+      Alert.alert('', i18n.t('Scanner:UnavailableService'))
       break;
     }
     default: {
-      Alert.alert('', 'Please try a different code and contact the manager.')
+      Alert.alert('', i18n.t('Scanner:SomethingWrong'))
       break;
     }
   }
@@ -44,7 +44,7 @@ const ScannerScreen = ({ navigation }) => {
       handleScannedCode(res.statusCode)
 
     }).catch(err => {
-      Alert.alert('', 'Please try a different code and contact the manager.')
+      Alert.alert('', i18n.t('Scanner:SomethingWrong'))
     })
   }
 
@@ -55,7 +55,6 @@ const ScannerScreen = ({ navigation }) => {
 
         <RNCamera
           style={styles.preview}
-
           onBarCodeRead={onBarCodeRead}
           androidCameraPermissionOptions={{
             title: 'Permission to use camera',
