@@ -13,6 +13,9 @@ class Api {
       },
       scanner: {
         init: '/api/employee/assign_order'
+      },
+      emloyee: {
+        me: '/api/employee/me'
       }
 
     }
@@ -27,7 +30,7 @@ class Api {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'x-access-token': `${token}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(body)
     });
@@ -36,7 +39,7 @@ class Api {
     const statusCode = response.status;
 
 
-    const json = Promise.all([statusCode, data]).then(async json => {
+    const json = Promise.all([statusCode, data]).then(json => {
       return {
         statusCode: json[0],
         data: json[1]
@@ -48,14 +51,13 @@ class Api {
 
   async requestGET({ path = '', method = '', token = '' } = {}) {
 
-    console.log("GET " + path + ', body: ' + body)
-
+    console.log("GET " + path)
 
     const response = await fetch(`${this.host}${path}`, {
       method,
       headers: {
         'Content-Type': 'application/json',
-        'x-access-token': `${token}`
+        'Authorization': `Bearer ${token}`
       }
     });
 
@@ -86,6 +88,17 @@ class Api {
     });
   }
 
+  async getMe({ method = "GET", } = {}) {
+
+    const token = await AsyncStorage.getItem('userToken');
+
+    return this.requestGET({
+      path: this.path.emloyee.me,
+      token,
+      method,
+    });
+  }
+
   // END AUTH METHODS
 
   // SCANNER METHODS
@@ -93,7 +106,6 @@ class Api {
   async scanCode({ method = 'POST', code = '' } = {}) {
 
     const token = await AsyncStorage.getItem('userToken');
-    console.log("TOKEN", token)
 
     return this.requestPOST({
       path: this.path.scanner.init,

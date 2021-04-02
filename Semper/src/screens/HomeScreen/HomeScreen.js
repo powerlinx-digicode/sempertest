@@ -4,7 +4,8 @@ import HeaderBar from '../../components/Header/HeaderBar';
 import styles from './styles';
 import ScannerBottomBar from '../../components/ScannerBottomBar/ScannerBottomBar';
 import News from '../../components/NewsComponent/NewsComponent';
-import i18n from 'i18next';
+import i18n from '../../locales/i18n';
+
 
 const HomeScreen = ({ navigation, }) => {
   return (

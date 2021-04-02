@@ -4,7 +4,9 @@ import styles from './styles';
 import HeaderBar from '../../components/Header/HeaderBar';
 import { COLORS } from '../../constants/colors';
 import { connect } from 'react-redux';
-import i18n from 'i18next';
+import i18n from '../../locales/i18n';
+import { LogOut } from '../../services/Auth/authService';
+
 
 const MenuScreen = ({ navigation }) => {
 
@@ -15,8 +17,8 @@ const MenuScreen = ({ navigation }) => {
       <HeaderBar screenName={i18n.t('Menu:MenuScreenTitle')} canGoBack={true} goBack={() => navigation.goBack()} />
       <View style={styles.container}>
         <View style={styles.customerInfo}>
-          <Text style={styles.customerInfoName}>Jane Doe</Text>
-          <Text style={styles.customerInfoEmail}>D.Jane@gmail.com</Text>
+          <Text style={styles.customerInfoName}>Username</Text>
+          <Text style={styles.customerInfoEmail}>User e-mail</Text>
         </View>
         <View style={styles.notifyInfo}>
           <Text style={styles.notifyInfoText}>E-mail notification</Text>
@@ -29,7 +31,7 @@ const MenuScreen = ({ navigation }) => {
           />
         </View>
         <Text style={styles.titleAccount}>Account</Text>
-        <TouchableOpacity activeOpacity={0.9} style={styles.logoutBtn}>
+        <TouchableOpacity activeOpacity={0.9} style={styles.logoutBtn} onPress={() => LogOut()}>
           <Text style={styles.logoutBtnText}>{i18n.t('Menu:LogoutButton')}</Text>
         </TouchableOpacity>
 

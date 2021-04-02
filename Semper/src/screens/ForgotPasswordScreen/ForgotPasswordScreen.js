@@ -6,7 +6,8 @@ import MainLogo from '../../uikit/MainLogo/MainLogo';
 import Button from '../../uikit/Button/Button';
 import Input from '../../components/Input/Input';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import i18n from 'i18next';
+import i18n from '../../locales/i18n';
+
 
 const ForgotPassword = ({ navigation }) => {
 

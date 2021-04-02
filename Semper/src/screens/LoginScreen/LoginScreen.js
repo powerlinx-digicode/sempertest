@@ -8,7 +8,7 @@ import Input from '../../components/Input/Input';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { LogIn } from '../../store/customer/actions';
 import { connect } from 'react-redux';
-import i18n from 'i18next';
+import i18n from '../../locales/i18n';
 
 
 const LoginScreen = ({ navigation, isLoading, login, }) => {
