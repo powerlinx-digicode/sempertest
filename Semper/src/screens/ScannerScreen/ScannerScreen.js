@@ -37,12 +37,8 @@ const handleScannedCode = (statusCode) => {
 const ScannerScreen = ({ navigation }) => {
 
   const onBarCodeRead = (e) => {
-    Alert.alert("Barcode value is" + e.data, "Barcode type is" + e.type);
-
     API.scanCode({ code: e.data, }).then(res => {
-
       handleScannedCode(res.statusCode)
-
     }).catch(err => {
       Alert.alert('', i18n.t('Scanner:SomethingWrong'))
     })
