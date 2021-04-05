@@ -4,10 +4,14 @@ import styles from './styles';
 
 const News = ({ news }) => {
 
-  const [isOpened, setOpen] = useState(false)
+  const [isOpened, setOpen] = useState(false);
+  
+  const onSetOpen = () => {
+    setOpen(!isOpened);
+  };
 
   return (
-    <TouchableOpacity style={[styles.container, isOpened ? { minHeight: '80%' } : {}]} activeOpacity={1} onPress={() => setOpen(!isOpened)} activeOpacity={1}>
+    <TouchableOpacity style={[styles.container, isOpened ? { minHeight: '80%' } : {}]} activeOpacity={1} onPress={onSetOpen} activeOpacity={1}>
       <View style={styles.topInfo}>
         <Text style={styles.topTitle}>Main title for news</Text>
         <Text style={styles.topDate}>12.03.2021</Text>
